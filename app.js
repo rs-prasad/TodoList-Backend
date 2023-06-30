@@ -6,16 +6,21 @@ require("dotenv").config();
 
 /*****************************  file imports  *****************************/
 const tasksRoute = require("./routes/task.routes");
+const { notFoundPage } = require("./middleware/404");
+const errorHandlerMiddleware = require("./middleware/errorHandler");
 
 /*****************************  constants  *****************************/
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 /*****************************  middleware  *****************************/
 app.use(morgan("tiny"));
+app.use(express.static("./public"));
 app.use(express.json());
 
 /*****************************  routes  *****************************/
 app.use("/api/v1/tasks", tasksRoute);
+app.use(notFoundPage);
+app.use(errorHandlerMiddleware);
 
 /*****************************  listeners  *****************************/
 const start = async () => {
