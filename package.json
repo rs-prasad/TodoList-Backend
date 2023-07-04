@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
-    "client-start":" yarn serve -s public"
+    "client-start": "yarn serve -s public"
   },
   "keywords": [],
   "author": "",
@@ -18,5 +18,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
+  },
+  "engines": {
+    "node": ">=14.20.1"
   }
 }
